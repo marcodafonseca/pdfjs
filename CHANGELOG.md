@@ -6,6 +6,45 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.4.2] - 2020-10-23
+### Fixed
+- Updated PDF parser to ignore comments
+
+## [2.4.1] - 2020-08-08
+### Fixed
+- Reverted the broken change made in `2.4.0` - sorry for that!
+
+## [2.4.0] - 2020-08-08
+Unpublished.
+
+### Changed
+- Corrected how text is encoded to the PDF
+
+## [2.3.9] - 2020-06-09
+### Fixed
+- Fixed `Lexer is not defined` error when parsing a hex string #215
+- Added an error when multiple headers are added to a table #213
+
+## [2.3.8] - 2020-05-22
+### Fixed
+- Updated PDF parser to be more forgiving to out of place whitespace in PDF files
+
+## [2.3.7] - 2020-05-15
+### Fixed
+- Update PDF parser to accept whitespace before `endstream` keywords
+- Update PDF parser to ignore trailer prev pointers that point to the document beginning (offset = `0`)
+
+## [2.3.6] - 2020-04-28
+### Fixed
+- allow any whitespace between obj version and rev numbers when parsing PDF (fixes parsing of some PDF)
+- trim whitespace before starting to parse a PDF object (fixes parsing of MS print to PDF documents)
+- fix color space of embedded grayscale JPEGs #210
+
+## [2.3.5] - 2020-03-03
+### Fixed
+- fix possible `lexer.isWhiteSpace is not a function` errors when parsing PDFs
+- fix table header position when rendered right after page header #202
+
 ## [2.3.4] - 2020-01-30
 ### Fixed
 - include `ExtGState` and `Shading` resources from external PDFs when adding them as templates
