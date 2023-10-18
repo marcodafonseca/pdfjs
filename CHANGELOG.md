@@ -5,6 +5,48 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Fixed `Name must start with a leading slash` when adding an external document to a `pdfjs` document, and adding that result to another `pdfjs` document again (caused by a `null` object reference due to object streams). Also fixes duplicate objects when adding external documents with
+pages in object streams.
+
+## [2.5.2]
+### Fixed
+- Fixed unhandled promise rejection in `doc.asBuffer()` - take two
+
+## [2.5.1]
+### Fixed
+- Fixed unhandled promise rejection in `doc.asBuffer()`
+
+## [2.5.0]
+### Fixed
+- Fixed footer position after changing it #283
+- Fixed graphical state not reset hwen using templates (could lead to rotated/translated pages) #287
+- Fixed importing fonts in ESM context (in TS projects) #309
+
+### Changed
+- Added support for multiple table header rows #293
+
+## [2.4.7]
+### Fixed
+- Fixed error when rendering page headers close to the bottom of the page #213
+- Fixed reading PDF `Filter` property when being of type array #268
+
+## [2.4.6] - 2021-08-23
+### Fixed
+- Fixed images not adding page break
+
+## [2.4.5] - 2021-07-29
+### Fixed
+- Fixed PDF name parsing to accept empty names (`/`) #260
+
+## [2.4.4] - 2021-06-22
+### Fixed
+- Allow any whitespace in object streams (while parsing PDFs) #253
+- Fix main field for jsDelivr #256
+
+## [2.4.3] - 2021-04-22
+### Fixed
+- Fixed escape logic of PDF names [#252](https://github.com/rkusa/pdfjs/pull/252)
 
 ## [2.4.2] - 2020-10-23
 ### Fixed

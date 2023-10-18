@@ -1,10 +1,15 @@
-const test = require('tape')
-const pdf = require('../../lib')
+const test = require("tape");
+const pdf = require("../../lib");
 
-test('multiple table headers error', function(t) {
-  const doc = new pdf.Document()
-  const table = doc.table({widths: []})
-  table.header()
-  t.throws(() => table.header(), /The table already has a header, add additional rows to the existing table header instead/)
-  t.end()
-})
+test("table headers created in-between rows", function (t) {
+  const doc = new pdf.Document();
+  const table = doc.table({ widths: [] });
+  table.header();
+  table.header();
+  table.row();
+  t.throws(
+    () => table.header(),
+    /The table already has rows, cannot add additional headers/,
+  );
+  t.end();
+});
