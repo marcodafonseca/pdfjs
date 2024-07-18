@@ -69,6 +69,16 @@ declare module "pdfjs" {
         info: DocumentProperties & { id: string };
 
         /**
+         * The documents width.
+         */
+        width: number;
+
+        /**
+         * The documents height.
+         */
+        height: number;
+
+        /**
          * Document is a Readable stream and can therefore piped into other streams
          * @param dest destination
          * @param opts options
@@ -91,7 +101,20 @@ declare module "pdfjs" {
          * Can be used to render the document as a buffer
          * @param callback callback called with either error or buffer
          */
-        asBuffer(callback?: (err: Error, data: Buffer) => void): void;
+        asBuffer(callback: (err: Error, data: Buffer) => void): Promise<unknown>;
+
+        /**
+         * Can be used to render the document as a buffer
+         * @param opts can be used to control if the document will automatically be ended
+         */
+        asBuffer(opts: AsBufferOptions): Promise<Buffer>;
+
+        /**
+         * Can be used to render the document as a buffer
+         * @param opts can be used to control if the document will automatically be ended
+         * @param callback callback called with either error or buffer
+         */
+        asBuffer(opts: AsBufferOptions, callback: (err: Error, data: Buffer) => void): Promise<unknown>;
 
         /**
          * Add a header to the document
@@ -131,6 +154,8 @@ declare module "pdfjs" {
          */
         outline(title: string, destination: string, parent?: string | number): void;
     }
+
+    type AsBufferOptions = { end: boolean };
 
     export class Fragment {
         end(): void; // TODO
